@@ -29,7 +29,7 @@
 | payment_of_delivery_id | integer    | null: false                    |
 | prefecture_id          | integer    | null: false                    |
 | days_of_delivery_id    | integer    | null: false                    |
-| price                  | mediumint  | null: false, unsigned: true    |
+| price                  | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
 
 ### Association
