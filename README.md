@@ -11,7 +11,7 @@
 | last_name          | string | null: false               |
 | first_name_kana    | string | null: false               |
 | last_name_kana     | string | null: false               |
-| birth_date         | string | null: false               |
+| birth_date         | date   | null: false               |
 
 ### Association
 
@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column              | Type       | Option                         |
-| ------------------- | ---------- | ------------------------------ |
-| name                | string     | null: false                    |
-| description         | text       | null: false                    |
-| category            | string     | null: false                    |
-| condition           | string     | null: false                    |
-| payment_of_delivery | string     | null: false                    |
-| prefecture          | string     | null: false                    |
-| days_of_delivery    | string     | null: false                    |
-| price               | string     | null: false                    |
-| user                | references | null: false, foreign_key: true |
+| Column                 | Type       | Option                         |
+| -----------------------| ---------- | ------------------------------ |
+| name                   | string     | null: false                    |
+| description            | text       | null: false                    |
+| category_id            | integer    | null: false                    |
+| condition_id           | integer    | null: false                    |
+| payment_of_delivery_id | integer    | null: false                    |
+| prefecture_id          | integer    | null: false                    |
+| days_of_delivery_id    | integer    | null: false                    |
+| price                  | mediumint  | null: false, unsigned: true    |
+| user                   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -52,15 +52,15 @@
 
 ## addresses テーブル
 
-| Column       | Type       | Option                         |
-| ------------ | ---------- | ------------------------------ |
-| postal_code  | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| city         | string     | null: false                    |
-| address      | string     | null: false                    |
-| building     | string     | null: false                    |
-| phone_number | string     | null: false                    |
-| order        | references | null: false, foreign_key: true |
+| Column        | Type       | Option                         |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
