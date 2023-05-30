@@ -9,11 +9,11 @@ class User < ApplicationRecord
   NAME_KANA_REGEX = /\A[ァ-ヶー]+\z/.freeze
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :nickname,        presence: true
-  validates :last_name,       presence: true, format: { with: NAME_REGEX }
-  validates :first_name,      presence: true, format: { with: NAME_REGEX }
-  validates :last_name_kana,  presence: true, format: { with: NAME_KANA_REGEX }
-  validates :first_name_kana, presence: true, format: { with: NAME_KANA_REGEX }
+  validates :last_name,       presence: true, format: { with: NAME_REGEX, message: "is invalid. Input full-width characters" }
+  validates :first_name,      presence: true, format: { with: NAME_REGEX, message: "is invalid. Input full-width characters" }
+  validates :last_name_kana,  presence: true, format: { with: NAME_KANA_REGEX, message: "is invalid. Input full-width katakana characters" }
+  validates :first_name_kana, presence: true, format: { with: NAME_KANA_REGEX, message: "is invalid. Input full-width katakana characters" }
   validates :birth_date,      presence: true
-  validates :password,                        format: { with: PASSWORD_REGEX }
+  validates :password,                        format: { with: PASSWORD_REGEX, message: "is invalid. Include both letters and numbers" }
 
 end
