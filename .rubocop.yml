@@ -8,6 +8,7 @@ AllCops:
    - "bin/*"
    - "node_modules/**/*"
    - "Gemfile"
+   - "spec/spec_helper.rb"
 
 
 # 1行あたりの文字数をチェックする
@@ -79,3 +80,7 @@ Style/FrozenStringLiteralComment:
 # メソッドパラメータ名の最小文字数を設定
 Naming/MethodParameterName:
  MinNameLength: 1
+
+#Windowsの改行コードを変更 
+Style/EndOfLine: 
+  EnforcedStyle: lf
