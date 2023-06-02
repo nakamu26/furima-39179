@@ -26,8 +26,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_top_page
-    unless user_signed_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in?
   end
 end
