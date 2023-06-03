@@ -80,6 +80,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters')
       end
+      it 'priceが小数では登録できない' do
+        @item.price = 300.0
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
+      end
     end
   end
 end
