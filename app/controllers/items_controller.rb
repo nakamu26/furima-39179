@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_top_page, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
   end
@@ -23,9 +23,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :name, :description, :category_id, :condition_id,
                                  :shipping_fee_status_id, :prefecture_id,
                                  :scheduled_delivery_id, :price).merge(user_id: current_user.id)
-  end
-
-  def move_to_top_page
-    redirect_to root_path unless user_signed_in?
   end
 end
