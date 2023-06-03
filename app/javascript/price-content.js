@@ -10,7 +10,4 @@ function priceContent() {
   });
 };
 
-
-if(document.URL.match('items/new')) {
-  window.addEventListener('load', priceContent);
-}
+window.addEventListener('load', priceContent);
