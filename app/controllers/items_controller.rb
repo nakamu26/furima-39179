@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit]
+  before_action :set_item, only: [:show, :edit, :update]
   before_action :move_to_index, except: [:index, :show, :new, :create]
 
   def index
@@ -27,7 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     params[:item][:image] = @item.image unless params[:item][:image]
     if @item.update(item_params)
       redirect_to item_path(@item.id)
