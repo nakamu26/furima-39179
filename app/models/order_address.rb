@@ -1,7 +1,8 @@
 class OrderAddress
   include ActiveModel::Model
   attr_accessor :item_id, :user_id,
-                :postal_code, :prefecture_id, :city, :address, :building, :phone_number
+                :postal_code, :prefecture_id, :city, :address, :building, :phone_number,
+                :token
 
   POSTAL_CODE_REGEX = /\A\d{3}-\d{4}\z/.freeze
   with_options presence: true do
@@ -12,6 +13,7 @@ class OrderAddress
     validates :city
     validates :address
     validates :phone_number
+    validates :token
   end
   validates :phone_number, numericality: { only_integer: true, message: 'is invalid. Input only number' },
                            length: { in: 10..11, message: 'is too short' }
