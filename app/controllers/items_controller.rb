@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :new, :create]
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -23,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(item_id: params[:id])
   end
 
   def edit
@@ -55,9 +55,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def set_order
+    @order = Order.find_by(item_id: params[:id])
+  end
+
   def move_to_index
-    item = Item.find(params[:id])
-    unless user_signed_in? && current_user.id == item.user_id
+    set_item
+    set_order
+    unless user_signed_in? && current_user.id == @item.user_id && !@order
       redirect_to root_path
     end
   end
