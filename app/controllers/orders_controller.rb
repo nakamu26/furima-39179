@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   before_action :set_item, only: [:new, :create]
+  before_action :move_to_index, only: [:new, :create]
 
   def new
     @item = Item.find(params[:item_id])
@@ -35,5 +37,13 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_index
+    set_item
+    order = Order.find_by(item_id: params[:item_id])
+    unless user_signed_in? && current_user.id != @item.user_id && !order
+      redirect_to root_path
+    end
   end
 end
