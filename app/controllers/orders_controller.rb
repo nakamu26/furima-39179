@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_item, only: [:new, :create]
   before_action :move_to_index, only: [:new, :create]
+
+  before_action :set_item, only: [:new, :create]
 
   def new
     @item = Item.find(params[:item_id])
