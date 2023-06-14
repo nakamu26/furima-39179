@@ -4,12 +4,10 @@
     <%= image_tag item.image, class: "item-img" %>
 
     <%# sold out %>
-    <% @orders.each do |order| %>
-      <% if order.item_id == item.id %>
-        <div class='sold-out'>
-          <span>Sold Out!!</span>
-        </div>
-      <% end %>
+    <% if item.order %>
+      <div class='sold-out'>
+        <span>Sold Out!!</span>
+      </div>
     <% end %>
     <%# sold out %>
 
