@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:new, :create]
 
   def new
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
   end
 
