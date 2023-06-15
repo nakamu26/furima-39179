@@ -4,9 +4,11 @@
     <%= image_tag item.image, class: "item-img" %>
 
     <%# sold out %>
-    <%# <div class='sold-out'>
-      <span>Sold Out!!</span>
-    </div> %>
+    <% if item.order %>
+      <div class='sold-out'>
+        <span>Sold Out!!</span>
+      </div>
+    <% end %>
     <%# sold out %>
 
   </div>
